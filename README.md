@@ -1,4 +1,4 @@
-## Jekyll & Webpack, integrated!
+## Jekyll, Preact & Webpack, integrated!
 
 So you can have your React and serve it statically, too. Plugin-free and works with hosting on Github pages!
 
