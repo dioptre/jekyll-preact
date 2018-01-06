@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import { h, render, Component } from 'preact';
+
 
 class Hello extends Component {
   render() {

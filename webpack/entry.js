@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {render} from 'react-dom';
+import { h, render, Component } from 'preact';
+
 import Hello from './components/Hello';
 
 class App extends Component {
