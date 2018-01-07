@@ -6,11 +6,11 @@ import { defaultTo, mergeDeepRight } from 'ramda';
 let actions = store => ({
   // Actions can just return a state update:
   increment(state) {
-    return { count: state.count+1 }
+    return { hello: {...state.hello, count: state.hello.count+1 }}
   },
 
   // The above example as an Arrow Function:
-  increment2: ({ count }) => ({ count: count+1 }),
+  increment2: ({ hello }) => ({ hello : { ...hello, count: hello.count+1 }}),
 
   //Actions receive current state as first parameter and any other params next
   //check this function as <button onClick={incrementAndLog}>
@@ -65,7 +65,9 @@ class Hello extends Component {
           <li>{item}</li>
         ))}
        <p>Count: {count}</p>
-       <button onClick={this.props.incrementAsync}>Increment</button>
+       <button onClick={this.props.incrementAsync}>Increment Async</button>
+       <button onClick={this.props.increment2}>Increment2</button>
+       <button onClick={this.props.increment}>Increment</button>
       </div>
     )
   }

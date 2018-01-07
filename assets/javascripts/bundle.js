@@ -11548,14 +11548,14 @@ var actions = function actions(store) {
   return {
     // Actions can just return a state update:
     increment: function increment(state) {
-      return { count: state.count + 1 };
+      return { hello: _extends({}, state.hello, { count: state.hello.count + 1 }) };
     },
 
 
     // The above example as an Arrow Function:
     increment2: function increment2(_ref) {
-      var count = _ref.count;
-      return { count: count + 1 };
+      var hello = _ref.hello;
+      return { hello: _extends({}, hello, { count: hello.count + 1 }) };
     },
 
     //Actions receive current state as first parameter and any other params next
@@ -11610,8 +11610,6 @@ var Hello = function (_Component) {
   _createClass(Hello, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props$hello = this.props.hello,
           list = _props$hello.list,
           count = _props$hello.count,
@@ -11622,9 +11620,7 @@ var Hello = function (_Component) {
         null,
         (0, _preact.h)(
           'form',
-          { onSubmit: function onSubmit() {
-              _this2.props.addTodo();_this2.forceUpdate();
-            }, action: 'javascript:' },
+          { onSubmit: this.props.addTodo, action: 'javascript:' },
           (0, _preact.h)('input', { type: 'text', value: input, onKeyUp: this.props.onInputChange })
         ),
         list.map(function (item) {
@@ -11643,6 +11639,16 @@ var Hello = function (_Component) {
         (0, _preact.h)(
           'button',
           { onClick: this.props.incrementAsync },
+          'Increment Async'
+        ),
+        (0, _preact.h)(
+          'button',
+          { onClick: this.props.increment2 },
+          'Increment2'
+        ),
+        (0, _preact.h)(
+          'button',
+          { onClick: this.props.increment },
           'Increment'
         )
       );
