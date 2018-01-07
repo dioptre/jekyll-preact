@@ -4,7 +4,8 @@
   "description": "A simple boilerplate for webpack and jekyll integration.",
   "main": "bundle.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:prod": "webpack -p --env=prod --progress"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,9 @@
     "babel-preset-react": "^6.5.0"
   },
   "dependencies": {
-    "preact": "^8.2.7"
+    "preact": "^8.2.7",
+    "preact-router": "^2.6.0",
+    "unistore": "^3.0.3"
   },
   "babel": {
     "plugins": [
