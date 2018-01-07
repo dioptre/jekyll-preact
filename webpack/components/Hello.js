@@ -28,15 +28,12 @@ let actions = store => ({
   // ... or just actions that call store.setState() later:
   incrementAsync(state) {
     setTimeout( () => {
-      console.log(store);
       store.setState( { hello: { count : defaultTo(0)(state.hello.count) + 4} });
     }, 1000)
   }
 })
 class Hello extends Component {
   render() {
-    console.log(this)
-    //state.get('global');
     return (
       <div>
        <p>Count: {this.props.hello.count}</p>

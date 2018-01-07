@@ -11570,7 +11570,6 @@ var actions = function actions(store) {
     // ... or just actions that call store.setState() later:
     incrementAsync: function incrementAsync(state) {
       setTimeout(function () {
-        console.log(store);
         store.setState({ hello: { count: (0, _ramda.defaultTo)(0)(state.hello.count) + 4 } });
       }, 1000);
     }
@@ -11589,8 +11588,6 @@ var Hello = function (_Component) {
   _createClass(Hello, [{
     key: 'render',
     value: function render() {
-      console.log(this);
-      //state.get('global');
       return (0, _preact.h)(
         'div',
         null,
