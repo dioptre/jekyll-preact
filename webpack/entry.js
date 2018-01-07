@@ -13,7 +13,10 @@ let initialState = {
     test: true
   },
   hello: {
-    count : 1
+    count : 1,
+    test: false,
+    input: 's',
+    list: ['a1','b2']
    }
 };
 

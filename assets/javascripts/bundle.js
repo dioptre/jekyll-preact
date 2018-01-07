@@ -5836,7 +5836,10 @@ var initialState = {
     test: true
   },
   hello: {
-    count: 1
+    count: 1,
+    test: false,
+    input: 's',
+    list: ['a1', 'b2']
   }
 };
 
@@ -11523,6 +11526,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _preact = __webpack_require__(27);
 
 var _preact2 = __webpack_require__(64);
@@ -11536,6 +11541,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var actions = function actions(store) {
   return {
@@ -11570,8 +11577,23 @@ var actions = function actions(store) {
     // ... or just actions that call store.setState() later:
     incrementAsync: function incrementAsync(state) {
       setTimeout(function () {
-        store.setState({ hello: { count: (0, _ramda.defaultTo)(0)(state.hello.count) + 4 } });
+        var hello = (0, _ramda.mergeDeepRight)(state.hello, { count: (0, _ramda.defaultTo)(0)(state.hello.count) + 1 });
+        store.setState({ hello: hello });
       }, 1000);
+    },
+    onInputChange: function onInputChange(state, event) {
+      //console.log(this, state, event);
+      //this.setState({input: event.target.value})
+      var hello = (0, _ramda.mergeDeepRight)(state.hello, { input: event.target.value });
+      store.setState({ hello: hello });
+    },
+
+
+    // adds a todo item to the list array
+    addTodo: function addTodo(state, data) {
+      return { hello: _extends({}, state.hello, {
+          list: [].concat(_toConsumableArray(state.hello.list), [state.hello.input])
+        }) };
     }
   };
 };
@@ -11579,23 +11601,44 @@ var actions = function actions(store) {
 var Hello = function (_Component) {
   _inherits(Hello, _Component);
 
-  function Hello() {
+  function Hello(props) {
     _classCallCheck(this, Hello);
 
-    return _possibleConstructorReturn(this, (Hello.__proto__ || Object.getPrototypeOf(Hello)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Hello.__proto__ || Object.getPrototypeOf(Hello)).call(this));
   }
 
   _createClass(Hello, [{
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
+      var _props$hello = this.props.hello,
+          list = _props$hello.list,
+          count = _props$hello.count,
+          input = _props$hello.input;
+
       return (0, _preact.h)(
         'div',
         null,
         (0, _preact.h)(
+          'form',
+          { onSubmit: function onSubmit() {
+              _this2.props.addTodo();_this2.forceUpdate();
+            }, action: 'javascript:' },
+          (0, _preact.h)('input', { type: 'text', value: input, onKeyUp: this.props.onInputChange })
+        ),
+        list.map(function (item) {
+          return (0, _preact.h)(
+            'li',
+            null,
+            item
+          );
+        }),
+        (0, _preact.h)(
           'p',
           null,
           'Count: ',
-          this.props.hello.count
+          count
         ),
         (0, _preact.h)(
           'button',
