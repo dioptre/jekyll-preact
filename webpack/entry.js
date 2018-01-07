@@ -1,9 +1,9 @@
 import Router from 'preact-router';
+import AsyncRoute from 'preact-async-route';
 import { h, render, Component } from 'preact';
 import createStore from 'unistore';
 import { Provider } from 'unistore/preact';
 import devtools    from 'unistore/devtools';
-import { fromJS } from 'immutable';
 
 import Hello from './components/Hello';
 
@@ -28,10 +28,16 @@ render(
   <Provider store={store}>
     <Router>
       <Hello path="/"/>
-            {/* <B path="/b" id="42" />
+      {/*       
+      <AsyncRoute
+        path="/about"
+        getComponent={ () => System.import('./components/Hello').then(module => module.default) }
+        loading={ () => <div>loading...</div> }
+      />
+      <B path="/b" id="42" />
       <C path="/c/:id" />
       <C path="/d/:optional?/:params?" />
-      <D default /> */}
+      <D default /> */} 
     </Router>
   </Provider>,
   document.getElementById('root')

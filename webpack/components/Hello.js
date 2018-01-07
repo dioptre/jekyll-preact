@@ -1,6 +1,5 @@
 import { h, render, Component } from 'preact';
 import { connect } from 'unistore/preact';
-import { createSelector } from 'reselect';
 import { defaultTo, mergeDeepRight } from 'ramda';
 
 let actions = store => ({

@@ -1,11 +1,12 @@
 {
-  "name": "jekyll-webpack-react",
+  "name": "jekyll-preact",
   "version": "1.0.0",
-  "description": "A simple boilerplate for webpack and jekyll integration.",
+  "description": "A simple boilerplate for preact, webpack and jekyll integration.",
   "main": "bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:prod": "webpack -p --env=prod --progress"
+    "build:prod": "jekyll b && webpack -p --env=prod --progress",    
+    "serve" : "jekyll s & webpack -w & bash -c \"echo -e \\\"\\e[45m Use jobs fg kill %<job#> commands to manage background services started. \\\"\""
   },
   "repository": {
     "type": "git",
@@ -14,14 +15,17 @@
   "keywords": [
     "jekyll",
     "webpack",
-    "react"
+    "react",
+    "preact",
+    "unistore",
+    "router"
   ],
-  "author": "Allison Zadrozny",
+  "author": "Andrew Grosser",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/allizad/jekyll-webpack/issues"
+    "url": "https://github.com/dioptre/jekyll-preact/issues"
   },
-  "homepage": "https://github.com/allizad/jekyll-webpack#readme",
+  "homepage": "https://github.com/dioptre/jekyll-preact",
   "devDependencies": {
     "babel-core": "^6.7.7",
     "babel-loader": "^6.2.4",
@@ -30,11 +34,10 @@
     "babel-preset-react": "^6.5.0"
   },
   "dependencies": {
-    "immutable": "^3.8.2",
     "preact": "^8.2.7",
+    "preact-async-route": "^2.0.2",
     "preact-router": "^2.6.0",
     "ramda": "^0.25.0",
-    "reselect": "^3.0.1",
     "unistore": "^3.0.3"
   },
   "babel": {
