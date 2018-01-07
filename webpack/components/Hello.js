@@ -58,7 +58,7 @@ class Hello extends Component {
     const { list, count, input } = this.props.hello;
     return (
       <div>
-        <form onSubmit={() => { this.props.addTodo(); this.forceUpdate();}} action="javascript:">
+        <form onSubmit={this.props.addTodo} action="javascript:">
         <input type="text" value={input} onKeyUp={this.props.onInputChange} />
         </form>
         {list.map(item => (
