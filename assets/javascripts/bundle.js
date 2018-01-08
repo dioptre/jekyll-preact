@@ -6722,20 +6722,15 @@ var Hello = function (_Component) {
   _createClass(Hello, [{
     key: 'render',
     value: function render() {
-      var _props$hello = this.props.hello,
-          list = _props$hello.list,
-          count = _props$hello.count,
-          input = _props$hello.input;
-
       return (0, _preact.h)(
         'div',
         null,
         (0, _preact.h)(
           'form',
           { onSubmit: this.props.addTodo, action: 'javascript:' },
-          (0, _preact.h)('input', { type: 'text', value: input, onKeyUp: this.props.onInputChange })
+          (0, _preact.h)('input', { type: 'text', value: this.props.hello.input, onKeyUp: this.props.onInputChange })
         ),
-        list.map(function (item) {
+        this.props.hello.list.map(function (item) {
           return (0, _preact.h)(
             'li',
             null,
@@ -6746,7 +6741,7 @@ var Hello = function (_Component) {
           'p',
           null,
           'Count: ',
-          count
+          this.props.hello.count
         ),
         (0, _preact.h)(
           'button',

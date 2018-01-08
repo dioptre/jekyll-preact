@@ -54,16 +54,15 @@ class Hello extends Component {
     super();
   }
   render() {
-    const { list, count, input } = this.props.hello;
     return (
       <div>
         <form onSubmit={this.props.addTodo} action="javascript:">
-        <input type="text" value={input} onKeyUp={this.props.onInputChange} />
+          <input type="text" value={this.props.hello.input} onKeyUp={this.props.onInputChange} />
         </form>
-        {list.map(item => (
+        {this.props.hello.list.map(item => (
           <li>{item}</li>
         ))}
-       <p>Count: {count}</p>
+       <p>Count: {this.props.hello.count}</p>
        <button onClick={this.props.incrementAsync}>Increment Async</button>
        <button onClick={this.props.increment2}>Increment2</button>
        <button onClick={this.props.increment}>Increment</button>
