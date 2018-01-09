@@ -1,9 +1,10 @@
 import { h, render, Component } from 'preact';
 import { connect } from 'unistore/preact';
-import { defaultTo, mergeDeepRight } from 'ramda';
+import defaultTo from '../utils/defaultTo';
+import mergeDeepRight from '../utils/mergeDeepRight';
 
 let actions = store => ({
-  // Actions can just return a state update:
+  //Actions can just return a state update:
   increment(state) {
     return { hello: {...state.hello, count: state.hello.count+1 }}
   },
@@ -19,12 +20,12 @@ let actions = store => ({
   },
 
   // Async actions can be pure async/promise functions:
-  async getStuff(state) {
-    let res = await fetch('/foo.json')
-    return { stuff: await res.json() }
-  },
+  // async getStuff(state) {
+  //   let res = await fetch('/foo.json')
+  //   return { stuff: await res.json() }
+  // },
 
-  // ... or just actions that call store.setState() later:
+  //... or just actions that call store.setState() later:
   incrementAsync(state) {
     setTimeout( () => {
       let hello = mergeDeepRight(state.hello, { count : defaultTo(0)(state.hello.count) + 1});
@@ -40,7 +41,7 @@ let actions = store => ({
   },
 
 
-  // adds a todo item to the list array
+  //adds a todo item to the list array
   addTodo (state, data)  {
     return { hello : {
       ...state.hello,
@@ -51,7 +52,7 @@ let actions = store => ({
 })
 class Hello extends Component {
   constructor(props) {
-    super();
+    super(props);
   }
   render() {
     return (
