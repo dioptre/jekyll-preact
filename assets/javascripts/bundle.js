@@ -939,7 +939,7 @@ var actions = function actions(store) {
   return {
     //Actions can just return a state update:
     increment: function increment(state) {
-      return { hello: _extends({}, state.hello, { count: state.hello.count + 1, input: "akk" }) };
+      return { hello: _extends({}, state.hello, { count: state.hello.count + 1, input: "aksk" }) };
     },
 
 

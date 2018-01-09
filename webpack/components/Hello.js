@@ -6,7 +6,7 @@ import mergeDeepRight from '../utils/mergeDeepRight';
 let actions = store => ({
   //Actions can just return a state update:
   increment(state) {
-    return { hello: {...state.hello, count: state.hello.count+1, input: "akk" }}
+    return { hello: {...state.hello, count: state.hello.count+1, input: "aksk" }}
   },
 
   // The above example as an Arrow Function:
