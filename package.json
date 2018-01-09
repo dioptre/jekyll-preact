@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:prod": "jekyll b && webpack -p --env=prod --progress",
-    "serve": "jekyll s & webpack -w & bash -c \"echo -e \\\"\\e[45m Use jobs fg kill %<job#> commands to manage background services started. \\\"\""
+    "serve": "jekyll s --port=5000 --host=0.0.0.0 & webpack -w & bash -c \"echo -e \\\"\\e[45m Use jobs fg kill %<job#> commands to manage background services started. \\\"\""
   },
   "repository": {
     "type": "git",
