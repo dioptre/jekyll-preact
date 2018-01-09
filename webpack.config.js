@@ -16,7 +16,7 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['es2015'],
-          plugins: [require('babel-plugin-async-to-promises')]          
+          plugins: [require('babel-plugin-async-to-promises')] //Added async support for older browsers, IE   
         }
       }
     ]
